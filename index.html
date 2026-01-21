@@ -97,16 +97,22 @@
 
 
 
-    footer{
-      padding:18px 0 34px;
-      color:var(--muted);
-      font-size:12.5px;
-      line-height:1.6;
-    }
+footer{
+  border-top:1px solid var(--line);
+  padding:18px 0 34px;
+  margin-top:48px;              /* ensures footer sits below content */
+  color:var(--muted);
+  font-size:12.5px;
+}
+
     @media (max-width:720px){
       .home-text{
   font-size:15px;
   padding-top:32px;
+  footer{
+    margin-top:64px;
+  }
+        
 }
       .image-frame img{ height:280px; }
 .under-space{ height:120px; }
