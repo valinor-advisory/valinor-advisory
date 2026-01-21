@@ -17,7 +17,7 @@
       --text:#0b1220;
       --muted:#3f4a5a;
       --line:#e6e8ee;
-      --max:900px;
+      --max:1100px; /* match homepage */
     }
     *{box-sizing:border-box}
     body{
@@ -32,20 +32,22 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
+    /* Header (MATCHES HOMEPAGE) */
     header{
-      padding:28px 0 16px;
+      padding:34px 0 18px;
       border-bottom:1px solid var(--line);
     }
     .head{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:16px;
+      gap:18px;
     }
     .logo{
-      height:46px;
+      display:block;
+      height:56px; /* match homepage */
       width:auto;
-      max-width:min(420px,90vw);
+      max-width:min(420px, 90vw);
       object-fit:contain;
     }
     nav{
@@ -53,15 +55,15 @@
       gap:22px;
       flex-wrap:wrap;
       justify-content:center;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
+      align-items:center;
+      font-size:13px;           /* match homepage */
+      letter-spacing:.18em;     /* match homepage */
+      text-transform:uppercase; /* match homepage */
     }
-    nav a{padding:10px 6px}
+    nav a{padding:10px 6px;color:var(--text)}
 
-    main{
-      padding:44px 0;
-    }
+    /* Page content */
+    main{padding:44px 0}
     h1{
       margin:0 0 16px;
       font-size:12px;
@@ -83,6 +85,13 @@
       color:var(--muted);
       font-size:12.5px;
     }
+
+    /* Responsive (match homepage) */
+    @media (max-width:720px){
+      header{padding:26px 0 14px}
+      .logo{height:46px}
+      nav{gap:14px;letter-spacing:.16em}
+    }
   </style>
 </head>
 
@@ -94,7 +103,7 @@
           <img class="logo" src="Navy_Transparent.png" alt="Valinor" />
         </a>
 
-        <nav>
+        <nav aria-label="Primary navigation">
           <a href="about.html">About</a>
           <a href="team.html">Team</a>
           <a href="services.html">Services</a>
@@ -107,9 +116,7 @@
   <main>
     <div class="wrap">
       <h1>About</h1>
-      <p>
-        Text to be added.
-      </p>
+      <p>Text to be added.</p>
     </div>
   </main>
 
