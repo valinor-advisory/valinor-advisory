@@ -63,26 +63,31 @@
       padding:26px 0 0;
     }
 
-    /* Image block */
-    .image-frame{
-      border:1px solid var(--line);
-      background:#f6f7fb;
-      overflow:hidden;
-    }
-    .image-frame img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
+/* Image block */
+.image-frame{
+  border:1px solid var(--line);
+  background:#f6f7fb;
+  overflow:hidden;
+}
 
-    /* Space for text underneath (leave empty for now) */
-    .under-space{
-      height:120px; /* adjust later */
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      background:#ffffff;
-    }
+/* Fixed hero height with clean crop */
+.image-frame img{
+  display:block;
+  width:100%;
+  height:460px;          /* desktop hero height */
+  object-fit:cover;      /* crop */
+  object-position:center;/* keep skyline centered */
+}
+
+/* Space for text underneath (leave empty for now) */
+.under-space{
+  height:160px; /* more breathing room */
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#ffffff;
+}
+
 
     footer{
       padding:18px 0 34px;
@@ -91,6 +96,8 @@
       line-height:1.6;
     }
     @media (max-width:720px){
+      .image-frame img{ height:280px; }
+.under-space{ height:120px; }
       header{padding:26px 0 14px}
       .logo{height:46px}
       nav{gap:14px;letter-spacing:.16em}
