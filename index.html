@@ -105,13 +105,26 @@ footer{
   font-size:12.5px;
 }
 
-    @media (max-width:720px){
-      .home-text{
-  font-size:15px;
-  padding-top:32px;
-  footer{
-    margin-top:64px;
+@media (max-width:720px){
+  .image-frame img{
+    height:280px;
   }
+
+  .under-space{
+    height:auto;            /* allow text to expand */
+    padding-bottom:32px;    /* space before footer */
+  }
+
+  .home-text{
+    font-size:15px;
+    padding:32px 22px 0;
+  }
+
+  footer{
+    margin-top:48px;        /* push footer below content */
+  }
+}
+
         
 }
       .image-frame img{ height:280px; }
