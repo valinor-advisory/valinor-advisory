@@ -105,19 +105,20 @@
       padding:6px 0;
     }
     .logo-item img{
-      /* Previous Experience graphics: keep 250x300 aspect ratio (5:6) */
+ /* Previous Experience graphics: fixed 250x300 */
 #experienceGrid .logo-item{
-  min-height:0;                 /* override */
-  padding:0;                    /* override */
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 #experienceGrid .logo-item img{
-  width:100%;
-  max-width:220px;              /* shrink-to-fit; adjust later if needed */
-  aspect-ratio: 5 / 6;          /* 250x300 */
-  height:auto;
-  object-fit:contain;           /* do not crop */
+  width:250px;
+  height:300px;
+  object-fit:contain;
 }
+
 
       max-height:44px;
       max-width:100%;
