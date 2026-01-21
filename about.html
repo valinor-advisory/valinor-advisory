@@ -105,7 +105,7 @@
       padding:6px 0;
     }
     .logo-item img{
- /* Previous Experience graphics: fixed 250x300 */
+/* Previous Experience graphics: force native 250x300 */
 #experienceGrid .logo-item{
   padding:0;
   display:flex;
@@ -114,10 +114,13 @@
 }
 
 #experienceGrid .logo-item img{
-  width:250px;
-  height:300px;
+  width:250px !important;
+  height:300px !important;
+  max-width:none !important;
+  max-height:none !important;
   object-fit:contain;
 }
+
 
 
       max-height:44px;
