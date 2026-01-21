@@ -33,7 +33,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
-    /* Header (match homepage) */
+    /* Header */
     header{
       padding:34px 0 18px;
       border-bottom:1px solid var(--line);
@@ -68,27 +68,25 @@
     .section{padding:32px 0}
     .section + .section{border-top:1px solid var(--line)}
 
-    /* Centered, one size larger */
     .eyebrow{
       margin:0 0 18px;
-      font-size:13px;            /* was 12px */
+      font-size:13px;
       letter-spacing:.28em;
       text-transform:uppercase;
       font-weight:600;
-      text-align:center;         /* centered */
+      text-align:center;
     }
 
-    /* One size smaller */
     .copy{
       margin:0 auto;
       max-width:900px;
       color:var(--muted);
-      font-size:14px;            /* was 17px */
+      font-size:14px;
       line-height:1.95;
-        text-align:center;
+      text-align:center;
     }
 
-    /* Logo grids (no borders/boxes) */
+    /* Grids */
     .logo-grid{
       margin-top:22px;
       display:grid;
@@ -97,45 +95,32 @@
       align-items:center;
     }
     .logo-item{
-      grid-column:span 3;         /* 4 per row desktop */
-      min-height:64px;
+      grid-column:span 3;
       display:flex;
       align-items:center;
       justify-content:center;
       padding:6px 0;
     }
-    .logo-item img{
-/* Previous Experience graphics: force native 250x300 */
-#experienceGrid .logo-item{
-  padding:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
 
-#experienceGrid .logo-item img{
-  width:250px !important;
-  height:300px !important;
-  max-width:none !important;
-  max-height:none !important;
-  object-fit:contain;
-}
-
-
-
+    /* Select Clients logos (small) */
+    #clientsGrid .logo-item img{
       max-height:44px;
       max-width:100%;
       width:auto;
       height:auto;
       object-fit:contain;
     }
-    .logo-item .placeholder{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--muted);
-      text-align:center;
-      opacity:.75;
+
+    /* Previous Experience graphics (true 250x300) */
+    #experienceGrid .logo-item{
+      padding:0;
+    }
+    #experienceGrid .logo-item img{
+      width:250px;
+      height:300px;
+      max-width:none;
+      max-height:none;
+      object-fit:contain;
     }
 
     footer{
@@ -152,11 +137,9 @@
 
       .copy{font-size:15.5px}
 
-      .logo-item{
-        grid-column:span 6;       /* 2 per row mobile */
-        min-height:58px;
-      }
-      .logo-item img{max-height:40px}
+      .logo-item{grid-column:span 6}
+
+      #clientsGrid .logo-item img{max-height:40px}
     }
   </style>
 </head>
@@ -169,7 +152,7 @@
           <img class="logo" src="Navy_Transparent.png" alt="Valinor" />
         </a>
 
-        <nav aria-label="Primary navigation">
+        <nav>
           <a href="about.html">About</a>
           <a href="team.html">Team</a>
           <a href="services.html">Services</a>
@@ -182,7 +165,7 @@
   <main>
     <div class="wrap">
 
-      <section class="section" aria-label="About">
+      <section class="section">
         <h1 class="eyebrow">About</h1>
         <p class="copy">
           Based in Dubai, Valinor is a strategic advisory firm partnering with founders, executive teams and boards to navigate complexity,
@@ -193,43 +176,32 @@
         </p>
       </section>
 
-      <section class="section" aria-label="Select Clients">
+      <section class="section">
         <h2 class="eyebrow">Select Clients</h2>
-
-        <!-- Replace placeholders with <img> logos as you upload them -->
-<div class="logo-grid" id="clientsGrid">
-  <div class="logo-item">
-    <img src="RAIFF_Logo.svg" alt="RAIFF">
-  </div>
-  <div class="logo-item">
-    <img src="G42_logo.png" alt="G42">
-  </div>
-</div>
-
+        <div class="logo-grid" id="clientsGrid">
+          <div class="logo-item"><img src="RAIFF_Logo.svg" alt="RAIFF"></div>
+          <div class="logo-item"><img src="G42_logo.png" alt="G42"></div>
+        </div>
       </section>
 
-      <section class="section" aria-label="Previous Experience">
+      <section class="section">
         <h2 class="eyebrow">Previous Experience</h2>
-        <p class="copy">
-          Text to be added.
-        </p>
+        <p class="copy">Text to be added.</p>
 
-        <!-- Same logo framework underneath -->
-<div class="logo-grid" id="experienceGrid">
-  <div class="logo-item"><img src="Egis2.png" alt="Egis"></div>
-  <div class="logo-item"><img src="Egis3.png" alt="Egis"></div>
-  <div class="logo-item"><img src="Egis1.png" alt="Egis"></div>
-  <div class="logo-item"><img src="Qoria.png" alt="Qoria"></div>
-  <div class="logo-item"><img src="MSIP.png" alt="MSIP"></div>
-  <div class="logo-item"><img src="IKEA.png" alt="IKEA"></div>
-  <div class="logo-item"><img src="BAI.png" alt="BAI"></div>
-  <div class="logo-item"><img src="GSAM.png" alt="GSAM"></div>
-  <div class="logo-item"><img src="Amplifon.png" alt="Amplifon"></div>
-  <div class="logo-item"><img src="Cytognos.png" alt="Cytognos"></div>
-  <div class="logo-item"><img src="7-Eleven.png" alt="7-Eleven"></div>
-  <div class="logo-item"><img src="Macmahon.png" alt="Macmahon"></div>
-</div>
-
+        <div class="logo-grid" id="experienceGrid">
+          <div class="logo-item"><img src="Egis2.png" alt="Egis"></div>
+          <div class="logo-item"><img src="Egis3.png" alt="Egis"></div>
+          <div class="logo-item"><img src="Egis1.png" alt="Egis"></div>
+          <div class="logo-item"><img src="Qoria.png" alt="Qoria"></div>
+          <div class="logo-item"><img src="MSIP.png" alt="MSIP"></div>
+          <div class="logo-item"><img src="IKEA.png" alt="IKEA"></div>
+          <div class="logo-item"><img src="BAI.png" alt="BAI"></div>
+          <div class="logo-item"><img src="GSAM.png" alt="GSAM"></div>
+          <div class="logo-item"><img src="Amplifon.png" alt="Amplifon"></div>
+          <div class="logo-item"><img src="Cytognos.png" alt="Cytognos"></div>
+          <div class="logo-item"><img src="7-Eleven.png" alt="7-Eleven"></div>
+          <div class="logo-item"><img src="Macmahon.png" alt="Macmahon"></div>
+        </div>
       </section>
 
     </div>
@@ -243,53 +215,6 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    function centerLastRow(gridId){
-      const grid = document.getElementById(gridId);
-      if (!grid) return;
-
-      const items = Array.from(grid.querySelectorAll(".logo-item"));
-      if (!items.length) return;
-
-      // reset
-      items.forEach(el => el.style.gridColumn = "");
-
-      const isMobile = window.matchMedia("(max-width: 720px)").matches;
-      const perRow = isMobile ? 2 : 4;
-
-      const remainder = items.length % perRow;
-      if (remainder === 0) return;
-
-      const lastRowStartIndex = items.length - remainder;
-
-      if (perRow === 4) {
-        // each item spans 3 of 12 columns
-        const startsForRemainder = {
-          1: [5],
-          2: [3, 7],
-          3: [2, 5, 8]
-        };
-        (startsForRemainder[remainder] || []).forEach((startCol, i) => {
-          const el = items[lastRowStartIndex + i];
-          if (el) el.style.gridColumn = `${startCol} / span 3`;
-        });
-      } else {
-        // perRow === 2; each item spans 6 of 12 columns; remainder can only be 1
-        const el = items[lastRowStartIndex];
-        if (el) el.style.gridColumn = `4 / span 6`;
-      }
-    }
-
-    function runAll(){
-      centerLastRow("clientsGrid");
-      centerLastRow("experienceGrid");
-    }
-
-    runAll();
-    window.addEventListener("resize", () => {
-      clearTimeout(window.__valinorResizeTimer);
-      window.__valinorResizeTimer = setTimeout(runAll, 150);
-    });
   </script>
 </body>
 </html>
