@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | Valinor</title>
+  <meta name="description" content="About Valinor" />
+
+  <!-- Source Serif 4 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#3f4a5a;
+      --line:#e6e8ee;
+      --max:900px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+    header{
+      padding:28px 0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .head{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+    }
+    .logo{
+      height:46px;
+      width:auto;
+      max-width:min(420px,90vw);
+      object-fit:contain;
+    }
+    nav{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    nav a{padding:10px 6px}
+
+    main{
+      padding:44px 0;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:12px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.95;
+      font-size:17px;
+      max-width:760px;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 34px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="head">
+        <a href="index.html">
+          <img class="logo" src="Navy_Transparent.png" alt="Valinor" />
+        </a>
+
+        <nav>
+          <a href="about.html">About</a>
+          <a href="team.html">Team</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>About</h1>
+      <p>
+        Text to be added.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="y"></span> Valinor.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
