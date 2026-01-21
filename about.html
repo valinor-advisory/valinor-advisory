@@ -20,7 +20,7 @@
       --max:1100px;
     }
     *{box-sizing:border-box}
-    html{overflow-y:scroll} /* keep header perfectly stable across pages */
+    html{overflow-y:scroll}
     body{
       margin:0;
       background:var(--bg);
@@ -65,58 +65,59 @@
 
     /* Page */
     main{padding:44px 0 52px}
-    .section{padding:28px 0}
+    .section{padding:32px 0}
     .section + .section{border-top:1px solid var(--line)}
 
+    /* Centered, one size larger */
     .eyebrow{
       margin:0 0 18px;
-      font-size:12px;
+      font-size:13px;            /* was 12px */
       letter-spacing:.28em;
       text-transform:uppercase;
       font-weight:600;
-    }
-    .copy{
-      margin:0;
-      max-width:880px;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.95;
+      text-align:center;         /* centered */
     }
 
-    /* Select Clients grid */
-    .clients{
-      margin-top:18px;
+    /* One size smaller */
+    .copy{
+      margin:0 auto;
+      max-width:900px;
+      color:var(--muted);
+      font-size:16px;            /* was 17px */
+      line-height:1.95;
+      text-align:left;
     }
-    .clients-grid{
+
+    /* Logo grids (no borders/boxes) */
+    .logo-grid{
+      margin-top:22px;
       display:grid;
-      grid-template-columns:repeat(12, minmax(0, 1fr)); /* 12-col layout so we can center last row cleanly */
-      gap:18px;
+      grid-template-columns:repeat(12, minmax(0, 1fr));
+      gap:22px;
       align-items:center;
     }
-    .client{
-      grid-column:span 3; /* 4 per row on desktop */
-      border:1px solid var(--line);
-      border-radius:10px;
-      background:#fff;
-      height:86px;
+    .logo-item{
+      grid-column:span 3;         /* 4 per row desktop */
+      min-height:64px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:14px;
+      padding:6px 0;
     }
-    .client img{
-      max-height:46px;
+    .logo-item img{
+      max-height:44px;
       max-width:100%;
       width:auto;
       height:auto;
       object-fit:contain;
-      filter:none;
     }
-    .client .placeholder{
+    .logo-item .placeholder{
       font-size:12px;
       letter-spacing:.22em;
       text-transform:uppercase;
       color:var(--muted);
+      text-align:center;
+      opacity:.75;
     }
 
     footer{
@@ -131,12 +132,13 @@
       .logo{height:46px}
       nav{gap:14px;letter-spacing:.16em}
 
-      .copy{font-size:16px}
+      .copy{font-size:15.5px}
 
-      .client{
-        grid-column:span 6; /* 2 per row on mobile */
-        height:78px;
+      .logo-item{
+        grid-column:span 6;       /* 2 per row mobile */
+        min-height:58px;
       }
+      .logo-item img{max-height:40px}
     }
   </style>
 </head>
@@ -173,23 +175,28 @@
         </p>
       </section>
 
-      <section class="section clients" aria-label="Select Clients">
+      <section class="section" aria-label="Select Clients">
         <h2 class="eyebrow">Select Clients</h2>
 
-        <!--
-          HOW TO ADD LOGOS:
-          1) Upload each logo file to the repo root (same level as index.html)
-          2) Add a new block like:
-             <div class="client"><img src="client1.png" alt="Client name"></div>
-        -->
+        <!-- Replace placeholders with <img> logos as you upload them -->
+        <div class="logo-grid" id="clientsGrid">
+          <div class="logo-item"><div class="placeholder">Client Logo</div></div>
+          <div class="logo-item"><div class="placeholder">Client Logo</div></div>
+          <div class="logo-item"><div class="placeholder">Client Logo</div></div>
+        </div>
+      </section>
 
-        <div class="clients-grid" id="clientsGrid">
+      <section class="section" aria-label="Previous Experience">
+        <h2 class="eyebrow">Previous Experience</h2>
+        <p class="copy">
+          Text to be added.
+        </p>
 
-          <!-- Placeholder tiles (replace with real logos as you upload them) -->
-          <div class="client"><div class="placeholder">Client Logo</div></div>
-          <div class="client"><div class="placeholder">Client Logo</div></div>
-          <div class="client"><div class="placeholder">Client Logo</div></div>
-
+        <!-- Same logo framework underneath -->
+        <div class="logo-grid" id="experienceGrid">
+          <div class="logo-item"><div class="placeholder">Logo / Graphic</div></div>
+          <div class="logo-item"><div class="placeholder">Logo / Graphic</div></div>
+          <div class="logo-item"><div class="placeholder">Logo / Graphic</div></div>
         </div>
       </section>
 
@@ -205,16 +212,14 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Center the last row of client tiles so they sit between the columns above.
-    // Works for desktop (4 per row) and mobile (2 per row).
-    (function centerLastRow() {
-      const grid = document.getElementById("clientsGrid");
+    function centerLastRow(gridId){
+      const grid = document.getElementById(gridId);
       if (!grid) return;
 
-      const items = Array.from(grid.querySelectorAll(".client"));
-      if (items.length === 0) return;
+      const items = Array.from(grid.querySelectorAll(".logo-item"));
+      if (!items.length) return;
 
-      // Reset any previous positioning
+      // reset
       items.forEach(el => el.style.gridColumn = "");
 
       const isMobile = window.matchMedia("(max-width: 720px)").matches;
@@ -226,58 +231,32 @@
       const lastRowStartIndex = items.length - remainder;
 
       if (perRow === 4) {
-        // Each tile spans 3 of 12 columns.
+        // each item spans 3 of 12 columns
         const startsForRemainder = {
-          1: [5],        // center single tile
-          2: [3, 7],     // center two tiles
-          3: [2, 5, 8]   // center three tiles
+          1: [5],
+          2: [3, 7],
+          3: [2, 5, 8]
         };
-        const starts = startsForRemainder[remainder] || [];
-        starts.forEach((startCol, i) => {
+        (startsForRemainder[remainder] || []).forEach((startCol, i) => {
           const el = items[lastRowStartIndex + i];
           if (el) el.style.gridColumn = `${startCol} / span 3`;
         });
       } else {
-        // perRow === 2; each tile spans 6 of 12 columns.
-        // remainder can only be 1 here.
+        // perRow === 2; each item spans 6 of 12 columns; remainder can only be 1
         const el = items[lastRowStartIndex];
-        if (el) el.style.gridColumn = `4 / span 6`; // centered
+        if (el) el.style.gridColumn = `4 / span 6`;
       }
-    })();
+    }
 
-    // Re-run on resize to keep alignment correct.
+    function runAll(){
+      centerLastRow("clientsGrid");
+      centerLastRow("experienceGrid");
+    }
+
+    runAll();
     window.addEventListener("resize", () => {
-      // simple debounce
       clearTimeout(window.__valinorResizeTimer);
-      window.__valinorResizeTimer = setTimeout(() => {
-        const evt = new Event("valinor:center");
-        window.dispatchEvent(evt);
-      }, 150);
-    });
-    window.addEventListener("valinor:center", () => {
-      const grid = document.getElementById("clientsGrid");
-      if (!grid) return;
-      const items = Array.from(grid.querySelectorAll(".client"));
-      items.forEach(el => el.style.gridColumn = "");
-      // re-run
-      (function centerLastRow() {
-        const isMobile = window.matchMedia("(max-width: 720px)").matches;
-        const perRow = isMobile ? 2 : 4;
-        const remainder = items.length % perRow;
-        if (remainder === 0) return;
-        const lastRowStartIndex = items.length - remainder;
-
-        if (perRow === 4) {
-          const startsForRemainder = { 1:[5], 2:[3,7], 3:[2,5,8] };
-          (startsForRemainder[remainder] || []).forEach((startCol, i) => {
-            const el = items[lastRowStartIndex + i];
-            if (el) el.style.gridColumn = `${startCol} / span 3`;
-          });
-        } else {
-          const el = items[lastRowStartIndex];
-          if (el) el.style.gridColumn = `4 / span 6`;
-        }
-      })();
+      window.__valinorResizeTimer = setTimeout(runAll, 150);
     });
   </script>
 </body>
