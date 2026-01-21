@@ -72,12 +72,13 @@
     }
 
     /* Image renders at native size (no stretching, no frame) */
-    .photo img{
-      display:block;
-      width:auto;
-      height:auto;
-      max-width:100%;   /* prevents overflow on small screens */
-    }
+.photo img{
+  display:block;
+  width:350px;
+  height:350px;
+  object-fit:cover;
+}
+
 
     .name{
       margin:0 0 6px;
@@ -109,6 +110,10 @@
       header{padding:26px 0 14px}
       .logo{height:46px}
       nav{gap:14px;letter-spacing:.16em}
+.photo img{
+  width:220px;
+  height:220px;
+}
 
       .team-row{grid-template-columns: 1fr; gap:22px;}
       .name{font-size:24px;}
