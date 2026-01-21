@@ -113,6 +113,19 @@
       height:auto;
       object-fit:contain;
     }
+    /* Center Select Clients when fewer than 4 logos */
+#clientsGrid{
+  grid-auto-flow: row;
+}
+
+#clientsGrid .logo-item:nth-last-child(2):first-child{
+  grid-column: 4 / span 3;
+}
+
+#clientsGrid .logo-item:nth-last-child(1):first-child{
+  grid-column: 6 / span 3;
+}
+
 
     /* Previous Experience */
     #experienceGrid .logo-item{
