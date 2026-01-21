@@ -3,244 +3,257 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Valinor Advisory — independent strategic and transaction advisory." />
-  <meta name="robots" content="index,follow" />
   <title>Valinor Advisory</title>
+  <meta name="description" content="Valinor Advisory — independent strategic and transaction advisory." />
 
   <style>
     :root{
       --bg:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#e2e8f0;
-      --navy:#0b1f3a;
-      --navy-2:#102a4d;
-      --card:#f8fafc;
-      --max:1040px;
-      --r:16px;
+      --text:#0b1220;
+      --muted:#3f4a5a;
+      --line:#e6e8ee;
+      --link:#0b1220;
+      --max:980px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
-    a{color:inherit}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
-    .topbar{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--border);z-index:10}
-    .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .mark{
-      width:40px;height:40px;border-radius:10px;
-      background:linear-gradient(135deg,var(--navy),var(--navy-2));
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:700;letter-spacing:.06em;
+
+    /* Header */
+    header{
+      padding:48px 0 22px;
+      border-bottom:1px solid var(--line);
     }
-    .brandtext{line-height:1}
-    .brandtext .name{font-weight:750;letter-spacing:.12em}
-    .brandtext .sub{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.06em}
-    nav{display:flex;gap:16px;flex-wrap:wrap}
-    nav a{font-size:13px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px}
-    nav a:hover{background:var(--card);color:var(--text)}
-    .hero{padding:54px 0 18px}
-    .kicker{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--border);background:var(--card);border-radius:999px;padding:8px 12px;font-size:12px;color:var(--muted)}
-    h1{margin:18px 0 10px;font-size:40px;line-height:1.12;letter-spacing:-.02em;color:var(--navy)}
-    .lede{max-width:780px;font-size:18px;line-height:1.55;color:var(--muted);margin:0}
-    .grid{display:grid;gap:16px}
-    .cards{margin:26px 0 10px;grid-template-columns:repeat(12,1fr)}
-    .card{
-      border:1px solid var(--border);background:#fff;border-radius:var(--r);
-      padding:18px;box-shadow:0 1px 0 rgba(15,23,42,.03);
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
     }
-    .card h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
-    .card p{margin:0;color:var(--muted);line-height:1.55;font-size:14.5px}
-    .span-6{grid-column:span 6}
-    .span-4{grid-column:span 4}
-    .section{padding:34px 0}
-    .section h2{margin:0 0 10px;font-size:20px;letter-spacing:.02em;color:var(--navy)}
-    .section p{margin:0;color:var(--muted);line-height:1.65}
-    .list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-    .list li{border:1px solid var(--border);background:#fff;border-radius:14px;padding:14px 14px}
-    .list .t{font-weight:650;color:var(--text)}
-    .list .d{margin-top:4px;color:var(--muted);line-height:1.6;font-size:14.5px}
-    .two{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
-    .panel{border:1px solid var(--border);background:var(--card);border-radius:var(--r);padding:18px}
-    .panel h3{margin:0 0 10px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
-    .panel ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:11px 14px;border-radius:12px;border:1px solid var(--navy);
-      background:var(--navy);color:#fff;text-decoration:none;font-size:14px;font-weight:650;
+    .logo{
+      display:block;
+      height:56px;
+      width:auto;
+      max-width:min(360px, 90vw);
+      object-fit:contain;
     }
-    .btn:hover{background:var(--navy-2);border-color:var(--navy-2)}
-    .btn.secondary{
-      background:#fff;color:var(--navy);border-color:var(--border);
+    /* If you don't have the logo uploaded yet, this text mark will show */
+    .logofallback{
+      font-weight:750;
+      letter-spacing:.22em;
+      font-size:20px;
     }
-    .btn.secondary:hover{background:var(--card)}
-    footer{border-top:1px solid var(--border);padding:18px 0 30px;color:var(--muted);font-size:13px}
-    .footrow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-    .small{font-size:12px;color:var(--muted);line-height:1.6;max-width:920px}
-    @media (max-width:900px){
-      h1{font-size:34px}
-      .span-6,.span-4{grid-column:span 12}
-      .two{grid-template-columns:1fr}
+
+    nav{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    nav a{
+      color:var(--link);
+      padding:10px 6px;
+    }
+
+    /* Hero */
+    .hero{
+      padding:68px 0 58px;
+      text-align:center;
+    }
+    .hero h1{
+      margin:0 0 18px;
+      font-size:44px;
+      line-height:1.12;
+      letter-spacing:.08em;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .hero p{
+      margin:0 auto;
+      max-width:760px;
+      font-size:17px;
+      line-height:1.75;
+      color:var(--muted);
+    }
+
+    /* Sections */
+    section{
+      padding:56px 0;
+      border-top:1px solid var(--line);
+    }
+    .section-title{
+      margin:0 0 16px;
+      font-size:13px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .copy{
+      margin:0;
+      max-width:820px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:16px;
+    }
+    .grid{
+      margin-top:18px;
+      display:grid;
+      gap:14px;
+      grid-template-columns:1fr;
+    }
+    .item{
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .item:last-child{border-bottom:none}
+    .item .t{
+      font-weight:650;
+      letter-spacing:.02em;
+      margin-bottom:6px;
+      color:var(--text);
+    }
+    .item .d{
+      color:var(--muted);
+      line-height:1.75;
+      margin:0;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:22px 0 40px;
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.6;
+    }
+    .footrow{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+
+    /* Responsive */
+    @media (max-width:720px){
+      header{padding:34px 0 18px}
+      .hero{padding:52px 0 44px}
+      .hero h1{font-size:34px;letter-spacing:.06em}
+      nav{gap:14px;letter-spacing:.16em}
+      .logo{height:46px}
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
+  <header>
     <div class="wrap">
-      <div class="row">
-        <a class="brand" href="#top" aria-label="Valinor Advisory">
-          <!-- LOGO PLACEHOLDER:
-               Replace this block with <img src="logo.png" alt="Valinor Advisory" height="40" />
-               once you add your logo file to the repo root. -->
-          <div class="mark" aria-hidden="true">V</div>
-          <div class="brandtext">
-            <div class="name">VALINOR</div>
-            <div class="sub">ADVISORY</div>
-          </div>
-        </a>
+      <div class="brand">
+        <!-- LOGO:
+             1) Upload your logo file into the repo root (same level as index.html)
+             2) Set src below to the filename (e.g., "valinor-logo.png")
+             If you haven't uploaded yet, keep the image tag commented and use the fallback text. -->
 
-        <nav aria-label="Primary">
+        <!-- <img class="logo" src="valinor-logo.png" alt="Valinor Advisory" /> -->
+        <div class="logofallback">VALINOR</div>
+
+        <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
           <a href="#services">Services</a>
-          <a href="#credentials">Credentials</a>
-          <a href="#sectors">Sectors</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="kicker">Independent strategic and transaction advisory</div>
-        <h1>Valinor Advisory</h1>
-        <p class="lede">
-          Institutional-quality advice for management teams, founders, and investors navigating complex strategic decisions,
-          capital markets positioning, and M&amp;A execution.
-        </p>
-
-        <div class="grid cards" aria-label="Highlights">
-          <div class="card span-6">
-            <h3>Outcome-led</h3>
-            <p>Clear decision frameworks and execution discipline across high-stakes processes.</p>
-          </div>
-          <div class="card span-6">
-            <h3>Analytical depth</h3>
-            <p>Rigorous modelling, scenario analysis, and commercial assessment to support decisive action.</p>
-          </div>
-          <div class="card span-4">
-            <h3>Discreet</h3>
-            <p>Trusted support for sensitive situations and stakeholder management.</p>
-          </div>
-          <div class="card span-4">
-            <h3>Aligned</h3>
-            <p>Advice calibrated to shareholder, board, and management objectives.</p>
-          </div>
-          <div class="card span-4">
-            <h3>Hands-on</h3>
-            <p>Senior-led delivery from first principles through to close.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="wrap">
-        <h2>Services</h2>
-        <p>Focus areas aligned to typical board and executive decision points.</p>
-
-        <ul class="list" role="list">
-          <li>
-            <div class="t">M&amp;A advisory</div>
-            <div class="d">Buy-side and sell-side execution, including process design, positioning, negotiation support, and deal structuring.</div>
-          </li>
-          <li>
-            <div class="t">Strategic review</div>
-            <div class="d">Assessment of strategic options, capital allocation, portfolio rationalisation, and stakeholder alignment.</div>
-          </li>
-          <li>
-            <div class="t">Capital strategy</div>
-            <div class="d">Equity and structured capital planning, investor narrative, and transaction readiness.</div>
-          </li>
-          <li>
-            <div class="t">Partnerships &amp; complex negotiations</div>
-            <div class="d">Commercial frameworks, value sharing, and negotiation support for strategic partnerships.</div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="credentials" class="section">
-      <div class="wrap">
-        <div class="two">
-          <div>
-            <h2>Credentials</h2>
-            <p>
-              Delivered across complex transactions and strategic initiatives spanning technology, healthcare, infrastructure, and consumer sectors.
-              Experience includes advising senior stakeholders in time-sensitive and high-scrutiny situations.
-            </p>
-
-            <div class="cta">
-              <a class="btn" href="mailto:contact@valinor-advisory.com?subject=Valinor%20Advisory%20enquiry">Email Valinor</a>
-              <a class="btn secondary" href="#contact">Contact details</a>
-            </div>
-          </div>
-
-          <aside class="panel" aria-label="Approach">
-            <h3>Approach</h3>
-            <ul>
-              <li>Define the decision and success criteria upfront.</li>
-              <li>Build an evidence base: financial, commercial, and stakeholder.</li>
-              <li>Develop a clear narrative and process strategy.</li>
-              <li>Execute with tight control of timetables, messaging, and negotiation leverage.</li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="sectors" class="section">
-      <div class="wrap">
-        <h2>Sectors</h2>
-        <p>Representative sectors where Valinor Advisory is active.</p>
-
-        <ul class="list" role="list">
-          <li><div class="t">Healthcare &amp; Biopharma</div><div class="d">Strategy, capital planning, partnering, and transaction execution.</div></li>
-          <li><div class="t">Technology</div><div class="d">Strategic positioning, growth initiatives, and complex stakeholder dynamics.</div></li>
-          <li><div class="t">Infrastructure &amp; Energy</div><div class="d">Asset-level strategy and transaction support across essential infrastructure themes.</div></li>
-          <li><div class="t">Consumer &amp; Retail</div><div class="d">Growth strategy, capital structure, and portfolio decisions.</div></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="wrap">
-        <h2>Contact</h2>
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-label="Introduction">
+        <h1>Experienced. Unconflicted. Trusted.</h1>
         <p>
-          For enquiries, please email:
-          <strong><a href="mailto:contact@valinor-advisory.com">contact@valinor-advisory.com</a></strong>
+          Valinor Advisory provides independent strategic and transaction advice to management teams, founders,
+          and investors. Senior-led delivery with rigorous analysis and discreet execution.
         </p>
+      </section>
 
-        <div class="panel" style="margin-top:14px">
-          <h3>Availability</h3>
-          <p class="small">
-            Valinor Advisory engages selectively. If relevant, include (i) company name, (ii) situation summary, (iii) timeline, and (iv) preferred next step.
-          </p>
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <p class="copy">
+          Independent advisory focused on high-stakes decision points across strategy, capital structure, and M&amp;A.
+          Advice is tailored to stakeholder objectives and delivered with execution discipline.
+        </p>
+      </section>
+
+      <section id="team">
+        <h2 class="section-title">Team</h2>
+        <p class="copy">
+          Senior-led engagement model. Share a short team/biography section here, or we can format this as a clean
+          “Partner” block (name, one-line credentials, and 3–5 bullets).
+        </p>
+      </section>
+
+      <section id="services">
+        <h2 class="section-title">Services</h2>
+        <p class="copy">Representative advisory services include:</p>
+
+        <div class="grid" role="list">
+          <div class="item" role="listitem">
+            <div class="t">M&amp;A Advisory</div>
+            <p class="d">Buy-side and sell-side execution, process design, negotiation support, and transaction structuring.</p>
+          </div>
+          <div class="item" role="listitem">
+            <div class="t">Strategic Review</div>
+            <p class="d">Assessment of strategic options, capital allocation, portfolio decisions, and stakeholder alignment.</p>
+          </div>
+          <div class="item" role="listitem">
+            <div class="t">Capital Strategy</div>
+            <p class="d">Equity and structured capital planning, investor narrative, and transaction readiness.</p>
+          </div>
+          <div class="item" role="listitem">
+            <div class="t">Partnerships</div>
+            <p class="d">Commercial frameworks and negotiation support for strategic partnerships and complex stakeholder situations.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="copy">
+          Email: <a href="mailto:contact@valinor-advisory.com">contact@valinor-advisory.com</a>
+        </p>
+      </section>
+    </div>
   </main>
 
   <footer>
     <div class="wrap">
       <div class="footrow">
         <div>&copy; <span id="y"></span> Valinor Advisory. All rights reserved.</div>
-        <div><a href="#top" style="text-decoration:none;color:var(--muted)">Back to top</a></div>
+        <div>
+          <a href="#about">About</a> &nbsp;|&nbsp;
+          <a href="#team">Team</a> &nbsp;|&nbsp;
+          <a href="#services">Services</a> &nbsp;|&nbsp;
+          <a href="#contact">Contact</a>
+        </div>
       </div>
-      <p class="small" style="margin-top:10px">
+      <div style="margin-top:10px">
         This website is provided for information purposes only and does not constitute legal, financial, or investment advice.
-      </p>
+      </div>
     </div>
   </footer>
 
@@ -249,4 +262,3 @@
   </script>
 </body>
 </html>
-
