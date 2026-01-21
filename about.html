@@ -91,7 +91,7 @@
       margin-top:22px;
       display:grid;
       grid-template-columns:repeat(12, minmax(0, 1fr));
-      gap:14px;
+      gap:10px; /* tightened: equal horizontal & vertical */
       align-items:center;
     }
     .logo-item{
@@ -102,12 +102,9 @@
       padding:6px 0;
     }
 
-    /* Select Clients — centered as a group */
+    /* Select Clients */
     #clientsGrid{
       justify-content:center;
-    }
-    #clientsGrid .logo-item{
-      grid-column:span 3;
     }
     #clientsGrid .logo-item img{
       max-height:44px;
@@ -117,13 +114,13 @@
       object-fit:contain;
     }
 
-    /* Previous Experience — ~30% smaller than 250x300 */
+    /* Previous Experience */
     #experienceGrid .logo-item{
       padding:0;
     }
     #experienceGrid .logo-item img{
-      width:175px;   /* 250 * 0.7 */
-      height:210px;  /* 300 * 0.7 */
+      width:175px;
+      height:210px;
       max-width:none;
       max-height:none;
       object-fit:contain;
