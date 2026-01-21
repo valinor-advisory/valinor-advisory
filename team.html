@@ -18,7 +18,6 @@
       --muted:#3f4a5a;
       --line:#e6e8ee;
       --max:1100px;
-      --tile:#0f5f7a; /* deep blue placeholder block */
     }
     *{box-sizing:border-box}
     html{overflow-y:scroll}
@@ -34,7 +33,6 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
-    /* Header */
     header{
       padding:34px 0 18px;
       border-bottom:1px solid var(--line);
@@ -64,34 +62,22 @@
     }
     nav a{padding:10px 6px;color:var(--text)}
 
-    /* Page */
     main{padding:44px 0 52px}
 
     .team-row{
       display:grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: auto 1fr; /* image keeps natural width */
       gap:48px;
       align-items:start;
     }
 
-    .photo{
-      width:100%;
-      aspect-ratio: 1 / 1.15; /* similar proportions to your mock */
-      background:var(--tile);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      font-size:22px;
-      letter-spacing:.04em;
+    /* Image renders at native size (no stretching, no frame) */
+    .photo img{
+      display:block;
+      width:auto;
+      height:auto;
+      max-width:100%;   /* prevents overflow on small screens */
     }
-.photo img{
-  width:200px;
-  height:200px;
-  object-fit:contain;
-  display:block;
-}
-
 
     .name{
       margin:0 0 6px;
@@ -119,9 +105,6 @@
       font-size:12.5px;
     }
 
-    @media (max-width:900px){
-      .team-row{grid-template-columns: 280px 1fr; gap:34px;}
-    }
     @media (max-width:720px){
       header{padding:26px 0 14px}
       .logo{height:46px}
@@ -155,9 +138,8 @@
     <div class="wrap">
       <div class="team-row">
 
-        <!-- Image block: upload a headshot named "ogi.jpg" to repo root to replace placeholder -->
         <div class="photo" aria-label="Profile image">
-          <img src="ogi.jpg" alt="Ogi Lalovic" onerror="this.remove(); this.parentElement.textContent='image';" />
+          <img src="ogi.jpg" alt="Ogi Lalovic" />
         </div>
 
         <div>
