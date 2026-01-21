@@ -17,15 +17,15 @@
       --text:#0b1220;
       --muted:#3f4a5a;
       --line:#e6e8ee;
-      --max:1100px; /* match homepage */
+      --max:1100px;
     }
     *{box-sizing:border-box}
-    html { overflow-y: scroll; }
+    html{overflow-y:scroll} /* keep header perfectly stable across pages */
     body{
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-family:"Source Serif 4", Georgia, "Times New Roman", serif;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
@@ -33,7 +33,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
-    /* Header (MATCHES HOMEPAGE) */
+    /* Header (match homepage) */
     header{
       padding:34px 0 18px;
       border-bottom:1px solid var(--line);
@@ -46,7 +46,7 @@
     }
     .logo{
       display:block;
-      height:56px; /* match homepage */
+      height:56px;
       width:auto;
       max-width:min(420px, 90vw);
       object-fit:contain;
@@ -57,27 +57,66 @@
       flex-wrap:wrap;
       justify-content:center;
       align-items:center;
-      font-size:13px;           /* match homepage */
-      letter-spacing:.18em;     /* match homepage */
-      text-transform:uppercase; /* match homepage */
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
     }
     nav a{padding:10px 6px;color:var(--text)}
 
-    /* Page content */
-    main{padding:44px 0}
-    h1{
-      margin:0 0 16px;
+    /* Page */
+    main{padding:44px 0 52px}
+    .section{padding:28px 0}
+    .section + .section{border-top:1px solid var(--line)}
+
+    .eyebrow{
+      margin:0 0 18px;
       font-size:12px;
       letter-spacing:.28em;
       text-transform:uppercase;
       font-weight:600;
     }
-    p{
+    .copy{
       margin:0;
+      max-width:880px;
       color:var(--muted);
-      line-height:1.95;
       font-size:17px;
-      max-width:760px;
+      line-height:1.95;
+    }
+
+    /* Select Clients grid */
+    .clients{
+      margin-top:18px;
+    }
+    .clients-grid{
+      display:grid;
+      grid-template-columns:repeat(12, minmax(0, 1fr)); /* 12-col layout so we can center last row cleanly */
+      gap:18px;
+      align-items:center;
+    }
+    .client{
+      grid-column:span 3; /* 4 per row on desktop */
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+    .client img{
+      max-height:46px;
+      max-width:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      filter:none;
+    }
+    .client .placeholder{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
     }
 
     footer{
@@ -87,11 +126,17 @@
       font-size:12.5px;
     }
 
-    /* Responsive (match homepage) */
     @media (max-width:720px){
       header{padding:26px 0 14px}
       .logo{height:46px}
       nav{gap:14px;letter-spacing:.16em}
+
+      .copy{font-size:16px}
+
+      .client{
+        grid-column:span 6; /* 2 per row on mobile */
+        height:78px;
+      }
     }
   </style>
 </head>
@@ -116,19 +161,124 @@
 
   <main>
     <div class="wrap">
-      <h1>About</h1>
-      <p>Text to be added.</p>
+
+      <section class="section" aria-label="About">
+        <h1 class="eyebrow">About</h1>
+        <p class="copy">
+          Valinor is a strategic advisory firm partnering with founders, executive teams and boards to navigate complexity,
+          sharpen decision-making and drive disciplined execution. We bring over a decade of experience advising on corporate
+          strategy, growth initiatives and complex transactions, combining rigorous analytical capability with practical
+          commercial judgment. Our work is grounded in long-term relationships and a commitment to objective, trusted counsel
+          at critical inflection points.
+        </p>
+      </section>
+
+      <section class="section clients" aria-label="Select Clients">
+        <h2 class="eyebrow">Select Clients</h2>
+
+        <!--
+          HOW TO ADD LOGOS:
+          1) Upload each logo file to the repo root (same level as index.html)
+          2) Add a new block like:
+             <div class="client"><img src="client1.png" alt="Client name"></div>
+        -->
+
+        <div class="clients-grid" id="clientsGrid">
+
+          <!-- Placeholder tiles (replace with real logos as you upload them) -->
+          <div class="client"><div class="placeholder">Client Logo</div></div>
+          <div class="client"><div class="placeholder">Client Logo</div></div>
+          <div class="client"><div class="placeholder">Client Logo</div></div>
+
+        </div>
+      </section>
+
     </div>
   </main>
 
   <footer>
     <div class="wrap">
-      &copy; <span id="y"></span> Valinor.
+      &copy; <span id="y"></span> Valinor. All rights reserved.
     </div>
   </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Center the last row of client tiles so they sit between the columns above.
+    // Works for desktop (4 per row) and mobile (2 per row).
+    (function centerLastRow() {
+      const grid = document.getElementById("clientsGrid");
+      if (!grid) return;
+
+      const items = Array.from(grid.querySelectorAll(".client"));
+      if (items.length === 0) return;
+
+      // Reset any previous positioning
+      items.forEach(el => el.style.gridColumn = "");
+
+      const isMobile = window.matchMedia("(max-width: 720px)").matches;
+      const perRow = isMobile ? 2 : 4;
+
+      const remainder = items.length % perRow;
+      if (remainder === 0) return;
+
+      const lastRowStartIndex = items.length - remainder;
+
+      if (perRow === 4) {
+        // Each tile spans 3 of 12 columns.
+        const startsForRemainder = {
+          1: [5],        // center single tile
+          2: [3, 7],     // center two tiles
+          3: [2, 5, 8]   // center three tiles
+        };
+        const starts = startsForRemainder[remainder] || [];
+        starts.forEach((startCol, i) => {
+          const el = items[lastRowStartIndex + i];
+          if (el) el.style.gridColumn = `${startCol} / span 3`;
+        });
+      } else {
+        // perRow === 2; each tile spans 6 of 12 columns.
+        // remainder can only be 1 here.
+        const el = items[lastRowStartIndex];
+        if (el) el.style.gridColumn = `4 / span 6`; // centered
+      }
+    })();
+
+    // Re-run on resize to keep alignment correct.
+    window.addEventListener("resize", () => {
+      // simple debounce
+      clearTimeout(window.__valinorResizeTimer);
+      window.__valinorResizeTimer = setTimeout(() => {
+        const evt = new Event("valinor:center");
+        window.dispatchEvent(evt);
+      }, 150);
+    });
+    window.addEventListener("valinor:center", () => {
+      const grid = document.getElementById("clientsGrid");
+      if (!grid) return;
+      const items = Array.from(grid.querySelectorAll(".client"));
+      items.forEach(el => el.style.gridColumn = "");
+      // re-run
+      (function centerLastRow() {
+        const isMobile = window.matchMedia("(max-width: 720px)").matches;
+        const perRow = isMobile ? 2 : 4;
+        const remainder = items.length % perRow;
+        if (remainder === 0) return;
+        const lastRowStartIndex = items.length - remainder;
+
+        if (perRow === 4) {
+          const startsForRemainder = { 1:[5], 2:[3,7], 3:[2,5,8] };
+          (startsForRemainder[remainder] || []).forEach((startCol, i) => {
+            const el = items[lastRowStartIndex + i];
+            if (el) el.style.gridColumn = `${startCol} / span 3`;
+          });
+        } else {
+          const el = items[lastRowStartIndex];
+          if (el) el.style.gridColumn = `4 / span 6`;
+        }
+      })();
+    });
   </script>
 </body>
 </html>
