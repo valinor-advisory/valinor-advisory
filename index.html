@@ -10,7 +10,133 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#3f4a5a;
+      --line:#e6e8ee;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html { overflow-y: scroll;  }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+    header{
+      padding:34px 0 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .head{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+    .logo{
+      display:block;
+      height:56px;
+      width:auto;
+      max-width:min(420px, 90vw);
+      object-fit:contain;
+    }
+    nav{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    nav a{padding:10px 6px;color:var(--text)}
+
+    .hero{
+      padding:26px 0 0;
+    }
+
+/* Image block */
+.image-frame{
+  background:#f6f7fb;
+  overflow:hidden;
+}
+
+
+/* Fixed hero height with clean crop */
+.image-frame img{
+  display:block;
+  width:100%;
+  height:460px;          /* desktop hero height */
+  object-fit:cover;      /* crop */
+  object-position:center;/* keep skyline centered */
+}
+
+/* Space for text underneath (leave empty for now) */
+.under-space{
+  .home-text{
+  margin:0 auto;
+  max-width:820px;
+  text-align:center;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.9;
+  padding:48px 22px 0;
+}
+
+  height:160px;
+  background:#ffffff;
+}
+
+
+
+footer{
+  border-top:1px solid var(--line);
+  padding:18px 0 34px;
+  margin-top:150px;              /* ensures footer sits below content */
+  color:var(--muted);
+  font-size:12.5px;
+}
+
+@media (max-width:720px){
+  .image-frame img{
+    height:280px;
+  }
+
+  .under-space{
+    height:auto;            /* allow text to expand */
+    padding-bottom:150px;    /* space before footer */
+  }
+
+  .home-text{
+    font-size:15px;
+    padding:32px 22px 0;
+  }
+
+  footer{
+    margin-top:100px;        /* push footer below content */
+  }
+}
+
+        
+}
+      .image-frame img{ height:280px; }
+.under-space{ height:120px; }
+      header{padding:26px 0 14px}
+      .logo{height:46px}
+      nav{gap:14px;letter-spacing:.16em}
+      .under-space{height:175px}
+    }
+  </style>
 
 </head>
 
