@@ -165,6 +165,28 @@
         height:155px;
       }
     }
+
+.experience-desktop,
+.experience-mobile{
+  display:block;
+  margin:10px auto 0;
+  width:80%;
+  height:auto;
+}
+
+.experience-mobile{
+  display:none;
+}
+
+@media (max-width:720px){
+  .experience-desktop{ display:none; }
+  .experience-mobile{
+    display:block;
+    width:90%;
+  }
+}
+
+   
   </style>
 
 </head>
@@ -214,9 +236,9 @@
         <p class="copy">In past roles, members of the Valinor team have advised on a variety of M&A and financing transactions, spanning sectors such as technology, healthcare, consumer & retail, services and infrastructure.</p>
 
 
-<img src="Tombstone Master.png"
-     alt="Previous Experience"
-     style="display:block; margin:10px auto 0; width:80%; height:auto;">
+<img class="experience-desktop" src="Tombstone Master.png" alt="Previous Experience">
+<img class="experience-mobile" src="Tombstone Master Mobile.png" alt="Previous Experience">
+
 
 
       </section>
