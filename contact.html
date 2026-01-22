@@ -1,8 +1,105 @@
-<div style="text-align:center; font-size:15px; margin-top:120px;">
-  <div style="font-weight:600;">CONTACT</div>
-  <div style="margin-top:8px;">
-    E: <a href="mailto:ogi@valinor-advisory.com" style="color:inherit; text-decoration:none;">
-      ogi@valinor-advisory.com
-    </a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valinor – Contact</title>
+  <meta name="description" content="Valinor Advisory – Contact" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#3f4a5a;
+      --line:#e6e8ee;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Source Serif 4", Georgia, "Times New Roman", serif;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+    header{
+      padding:34px 0 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .head{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+    .logo{
+      height:56px;
+      max-width:min(420px,90vw);
+      object-fit:contain;
+    }
+    nav{
+      display:flex;
+      gap:22px;
+      justify-content:center;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 34px;
+      margin-top:150px;
+      color:var(--muted);
+      font-size:12.5px;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="head">
+      <img class="logo" src="Navy_Transparent.png" alt="Valinor Advisory" />
+      <nav>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </div>
-</div>
+</header>
+
+<main>
+  <div style="text-align:center; font-size:15px; margin:120px 0;">
+    <div style="font-weight:600;">CONTACT</div>
+    <div style="margin-top:8px;">
+      E:
+      <a href="mailto:ogi@valinor-advisory.com">
+        ogi@valinor-advisory.com
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="y"></span> Valinor. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
