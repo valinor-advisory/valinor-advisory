@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | Valinor</title>
   <meta name="description" content="About Valinor" />
@@ -21,8 +20,10 @@
       --line:#e6e8ee;
       --max:1100px;
     }
+
     *{box-sizing:border-box}
     html{overflow-y:scroll}
+
     body{
       margin:0;
       background:var(--bg);
@@ -31,8 +32,10 @@
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
+
     a{color:inherit;text-decoration:none}
     a:hover{text-decoration:underline}
+
     .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 
     /* Header */
@@ -40,12 +43,14 @@
       padding:34px 0 18px;
       border-bottom:1px solid var(--line);
     }
+
     .head{
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:18px;
     }
+
     .logo{
       display:block;
       height:56px;
@@ -53,6 +58,7 @@
       max-width:min(420px, 90vw);
       object-fit:contain;
     }
+
     nav{
       display:flex;
       gap:22px;
@@ -63,6 +69,7 @@
       letter-spacing:.18em;
       text-transform:uppercase;
     }
+
     nav a{padding:10px 6px;color:var(--text)}
 
     /* Page */
@@ -88,29 +95,29 @@
       text-align:center;
     }
 
-    /* Grids */
+    /* LOGO GRID BASE */
     .logo-grid{
-      margin-top:22px;
+      margin-top:30px;
       display:grid;
-      grid-template-columns:repeat(12, minmax(0, 1fr));
-      gap:6px;
       align-items:center;
+      justify-items:center;
     }
+
     .logo-item{
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:6px 0;
     }
 
-    /* Select Clients — FIXED */
+    /* Select Clients — UPDATED SPACING */
     #clientsGrid{
-      justify-items:center;
+      grid-template-columns:repeat(2, auto);
+      column-gap:60px;   /* ← Increased horizontal spacing */
+      row-gap:24px;
+      justify-content:center;
     }
-    #clientsGrid .logo-item{
-      grid-column:1 / -1;
-    }
-    #clientsGrid .logo-item img{
+
+    #clientsGrid img{
       max-height:80px;
       width:auto;
       height:auto;
@@ -121,13 +128,6 @@
     #experienceGrid .logo-item{
       padding:0;
     }
-    #experienceGrid .logo-item img{
-      width:150px;
-      height:180px;
-      max-width:none;
-      max-height:none;
-      object-fit:contain;
-    }
 
     footer{
       border-top:1px solid var(--line);
@@ -137,19 +137,22 @@
     }
 
     @media (max-width:720px){
+
       header{padding:26px 0 14px}
       .logo{height:46px}
       nav{gap:14px;letter-spacing:.16em}
 
       .copy{font-size:15.5px}
 
-      .logo-item{grid-column:span 6}
-      #clientsGrid .logo-item{grid-column:1 / -1}
-      #clientsGrid .logo-item img{max-height:40px}
+      /* Stack client logos on mobile */
+      #clientsGrid{
+        grid-template-columns:1fr;
+        column-gap:0;
+        row-gap:20px;
+      }
 
-      #experienceGrid .logo-item img{
-        width:130px;
-        height:155px;
+      #clientsGrid img{
+        max-height:50px;
       }
     }
 
@@ -160,6 +163,7 @@
       width:80%;
       height:auto;
     }
+
     .experience-mobile{display:none}
 
     @media (max-width:720px){
@@ -169,10 +173,12 @@
         width:90%;
       }
     }
+
   </style>
 </head>
 
 <body>
+
   <header>
     <div class="wrap">
       <div class="head">
@@ -206,6 +212,8 @@
         <div class="logo-grid" id="clientsGrid">
           <div class="logo-item">
             <img src="RAIFF_Logo.svg" alt="RAIFF">
+          </div>
+          <div class="logo-item">
             <img src="Precognition.png" alt="Precognition">
           </div>
         </div>
@@ -234,5 +242,6 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
